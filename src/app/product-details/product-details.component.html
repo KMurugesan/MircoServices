@@ -1,0 +1,164 @@
+<ngForm>
+  <div class="container-fluid">
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Product</label>
+          </div>
+          <div class="col-md-6">
+            <select [(ngModel)]="selectedProductType" (ngModelChange)="onProductChange($event)" name="setProductType"
+              class="dropdown">
+              <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Transport</label>
+          </div>
+          <div class="col-md-6">
+            <select [ngModel]="selectedTransportType" (ngModelChange)="onTransportChange($event)" name="setTransportType"
+              class="dropdown">
+              <option [ngValue]="transport" *ngFor="let transport of product.transportType">{{transport.transportName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Bandwidth</label>
+        </div>
+        <div class="col-md-6">
+          <select [ngModel]="selectedBandwidthType" (ngModelChange)="onBandwidthChange($event)" name="setBandwidthType"
+            class="dropdown">
+            <option [ngValue]="bandwidth" *ngFor="let bandwidth of product.bandwidthType">{{bandwidth.bandwidthName}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Building Extension</label>
+        </div>
+        <div class="col-md-6">
+          <select [ngModel]="selectedBEType" (ngModelChange)="onBEChange($event)" name="setBEType" class="dropdown">
+            <option [ngValue]="be" *ngFor="let be of product.businessExtensionType">{{be.bEName}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Router</label>
+        </div>
+        <div class="col-md-6">
+          <select [ngModel]="selectedRouterType" (ngModelChange)="onRouterChange($event)" name="setRouterType" class="dropdown">
+            <option [ngValue]="router" *ngFor="let router of product.routerType">{{router.routerName}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Base Charges</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="input-length" [(ngModel)]="product.price.basePrice" name="setBasePrice" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Shipping Charges</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="input-length" [(ngModel)]="product.price.shippingCharge" name="setShippingPrice" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Total Charges</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="input-length" [(ngModel)]="product.price.total" name="setTotalPrice" /> </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Discount Charges</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="input-length" [(ngModel)]="product.price.discount" name="setDiscountPrice" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button type="submit" class="btn input-length" (click)="persistProductDetails(product)">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button type="submit" class="btn">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</ngForm>

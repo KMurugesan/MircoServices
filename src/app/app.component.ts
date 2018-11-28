@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { ProductDetails } from './model/ProductDetails';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  @Input() product: ProductDetails;
+
+  constructor() {
+    this.product = new ProductDetails();
+  }
+
+  persistProductDetails(product) {
+    console.log(product);
+  }
 }

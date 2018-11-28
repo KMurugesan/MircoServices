@@ -1,0 +1,40 @@
+.info-box-icon {
+  width: 160px;
+  background: whitesmoke;
+}
+
+.info-box-text {
+  font-size: 50px;
+  padding: 10px;
+}
+
+.sorting {
+  font-size: 15px;
+  width: 330px;
+  box-shadow: none;
+  background-color: #337ab7;
+  font-weight: normal;
+  text-align: center;
+}
+
+.border {
+  border: 10px solid #f4f4f4;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.pull-right {
+  float: right;
+}
+
+.padding-top {
+  padding: 5px;
+}
+
+.btn {
+  width: 200px;
+}

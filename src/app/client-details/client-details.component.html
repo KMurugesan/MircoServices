@@ -1,0 +1,132 @@
+<div class="container-fluid">
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Client Name</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="details.clientName" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12 ">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Company</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="details.company" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Preferred Contact Method</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="details.preferredContactMethod" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Email</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" [(ngModel)]="details.email" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Extension</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.extension" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label>Company Address</label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.addressLine1" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.addressLine2" />
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label></label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.city" />
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.state" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+          <label></label>
+        </div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.zipCode" /></div>
+        <div class="col-md-3">
+          <input type="text" [(ngModel)]="details.address.county" />
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+  <div class="row padding-top">
+    <div class="col-md-12">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button type="submit" class="btn input-length" (click)="persistClientDetails(details)">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

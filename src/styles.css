@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+element.style {
+  width: 674px;
+}
+
+#fkbx {
+  background-color: #fff;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 25px;
+  border-top-color: rgb(160, 160, 160);
+  cursor: text;
+  display: inline-block;
+  font: 18px arial, sans-serif;
+  height: 36px;
+  line-height: 36px;
+  max-width: 672px;
+  position: relative;
+  width: 618px;
+}
+
+.padding {
+  padding: 20px;
+}
+
