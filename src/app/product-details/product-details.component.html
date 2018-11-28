@@ -24,10 +24,11 @@
             <label>Transport</label>
           </div>
           <div class="col-md-6">
-            <select [ngModel]="selectedTransportType" (ngModelChange)="onTransportChange($event)" name="setTransportType"
+            <!-- <select [ngModel]="selectedTransportType" (ngModelChange)="onTransportChange($event)" name="setTransportType"
               class="dropdown">
               <option [ngValue]="transport" *ngFor="let transport of product.transportType">{{transport.transportName}}</option>
-            </select>
+            </select> -->
+            <input type="text" class="input-length" [(ngModel)]="product.transportType" name="setTransportType" />
           </div>
         </div>
       </div>
@@ -41,10 +42,11 @@
           <label>Bandwidth</label>
         </div>
         <div class="col-md-6">
-          <select [ngModel]="selectedBandwidthType" (ngModelChange)="onBandwidthChange($event)" name="setBandwidthType"
+          <!-- <select [ngModel]="selectedBandwidthType" (ngModelChange)="onBandwidthChange($event)" name="setBandwidthType"
             class="dropdown">
             <option [ngValue]="bandwidth" *ngFor="let bandwidth of product.bandwidthType">{{bandwidth.bandwidthName}}</option>
-          </select>
+          </select> -->
+          <input type="text" class="input-length" [(ngModel)]="product.bandwidthType" name="setBandwidthType" />
         </div>
       </div>
     </div>
@@ -57,9 +59,10 @@
           <label>Building Extension</label>
         </div>
         <div class="col-md-6">
-          <select [ngModel]="selectedBEType" (ngModelChange)="onBEChange($event)" name="setBEType" class="dropdown">
+          <!-- <select [ngModel]="selectedBEType" (ngModelChange)="onBEChange($event)" name="setBEType" class="dropdown">
             <option [ngValue]="be" *ngFor="let be of product.businessExtensionType">{{be.bEName}}</option>
-          </select>
+          </select> -->
+          <input type="text" class="input-length" [(ngModel)]="product.businessExtensionType" name="setBusinessExtensionType" />
         </div>
       </div>
     </div>
@@ -72,9 +75,10 @@
           <label>Router</label>
         </div>
         <div class="col-md-6">
-          <select [ngModel]="selectedRouterType" (ngModelChange)="onRouterChange($event)" name="setRouterType" class="dropdown">
+          <!-- <select [ngModel]="selectedRouterType" (ngModelChange)="onRouterChange($event)" name="setRouterType" class="dropdown">
             <option [ngValue]="router" *ngFor="let router of product.routerType">{{router.routerName}}</option>
-          </select>
+          </select> -->
+          <input type="text" class="input-length" [(ngModel)]="product.routerType" name="setRouterType" />
         </div>
       </div>
     </div>
