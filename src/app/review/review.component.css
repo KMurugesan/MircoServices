@@ -1,5 +1,5 @@
 .padding-top {
-  padding: 5px;
+  padding: 10px;
 }
 
 .dropdown {
@@ -8,8 +8,18 @@
 
 .input-length {
   width: 200px;
+  color: crimson;
+  text-align: center;
 }
 
-.label {
-  width: 200px;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}

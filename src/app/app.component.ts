@@ -15,7 +15,5 @@ export class AppComponent {
     this.product = new ProductDetails();
   }
 
-  persistProductDetails(product) {
-    console.log(product);
-  }
+
 }

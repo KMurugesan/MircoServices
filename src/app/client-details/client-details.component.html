@@ -1,132 +1,165 @@
-<div class="container-fluid">
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Client Name</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="details.clientName" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12 ">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Company</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="details.company" />
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <div class="container-fluid">
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Client Name</label>
+          </div>
+          <div class="col-md-6">
+            <input formControlName="clientName" required placeholder="Enter Client Name">
+            <div class="alert  alert-danger" *ngIf="clientForm.get('clientName').hasError('required') && clientForm.get('clientName').touched">
+              Client Name is required
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Preferred Contact Method</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="details.preferredContactMethod" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Email</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="details.email" />
+    <div class="row padding-top">
+      <div class="col-md-12 ">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Company</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Enter Company Name" formControlName="companyName" required maxlength="20" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('companyName').hasError('required') && clientForm.get('companyName').touched">
+              Company Name is required
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Extension</label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.extension" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Company Address</label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.addressLine1" />
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.addressLine2" />
-        </div>
-      </div>
-      <div class="col-md-3"></div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label></label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.city" />
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.state" />
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Preferred Contact Method</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Select Preferred Method" formControlName="preferredContactMethod" required />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('preferredContactMethod').hasError('required') && clientForm.get('preferredContactMethod').touched">
+              Preferred Contact Method is required
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label></label>
-        </div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.zipCode" /></div>
-        <div class="col-md-3">
-          <input type="text" [(ngModel)]="details.address.county" />
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Email</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder=" Email" formControlName="email" required maxlength="40" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('email').hasError('required') && clientForm.get('email').touched && clientForm.get('email').invalid">
+              Email is required
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-3"></div>
     </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Extension</label>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" Extension" formControlName="extension" required maxlength="15" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('extension').hasError('required') && clientForm.get('extension').touched">
+              Extension is required
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          <div class="dropdown">
-            <button type="submit" class="btn input-length" (click)="persistClientDetails(details)">
-              Submit
-            </button>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Company Address</label>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" Street Address" formControlName="addressLine1" required maxlength="20" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('addressLine1').hasError('required') && clientForm.get('addressLine1').touched">
+              Address Line 1 is required
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" Address Line 2" formControlName="addressLine2" required maxlength="20" />
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label></label>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" City" formControlName="city" required maxlength="10" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('city').hasError('required') && clientForm.get('city').touched">
+              City is required
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" State/ Province/ Region" formControlName="state" required maxlength="10" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('state').hasError('required') && clientForm.get('state').touched">
+              State is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label></label>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" Postal/ ZipCode" formControlName="zipCode" required maxlength="7" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('zipCode').hasError('required') && clientForm.get('zipCode').touched">
+              Zip Code is required
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input placeholder=" County" formControlName="county" required maxlength="15" />
+            <div class="alert  alert-danger" *ngIf="clientForm.get('county').hasError('required') && clientForm.get('county').touched">
+              County is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button type="submit" style=" color: crimson;" class="btn input-length" [disabled]="clientForm.invalid" (click)="persistClientDetails(details)">
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</form>

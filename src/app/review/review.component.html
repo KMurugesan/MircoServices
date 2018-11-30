@@ -1,139 +1,198 @@
 <ngForm>
-  <div class="container-fluid">
-    <div class="row padding-top">
-      <div class="col-md-12">
+  <table class="padding-top" style="width: 750px; margin-left: 250px;">
+    <tr>
+      <div class="row padding-top">
         <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
+        <div class="col-md-6">
+          <div class="col-md-6">
             <label>Product</label>
           </div>
           <div class="col-md-6">
-            <!-- <select [(ngModel)]="selectedProductType" (ngModelChange)="onProductChange($event)" name="setProductType"
-              class="dropdown">
-              <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productName}}</option>
-            </select> -->
             <label type="text" class="input-length">{{product.productType}}</label>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
+    </tr>
+    <tr>
+      <div class="row padding-top">
         <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
+        <div class="col-md-6">
+          <div class="col-md-6">
             <label>Transport</label>
           </div>
           <div class="col-md-6">
-            <!-- <select [ngModel]="selectedTransportType" (ngModelChange)="onTransportChange($event)" name="setTransportType"
-                class="dropdown">
-                <option [ngValue]="transport" *ngFor="let transport of product.transportType">{{transport.transportName}}</option>
-              </select> -->
             <label type="text" class="input-length">{{product.transportType}}</label>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Bandwidth</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <!-- <select [ngModel]="selectedBandwidthType" (ngModelChange)="onBandwidthChange($event)" name="setBandwidthType"
-              class="dropdown">
-              <option [ngValue]="bandwidth" *ngFor="let bandwidth of product.bandwidthType">{{bandwidth.bandwidthName}}</option>
-            </select> -->
-          <label type="text" class="input-length">{{product.bandwidthType}}</label>
+          <div class="col-md-6">
+            <label>Bandwidth</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.bandwidthType}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Building Extension</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <!-- <select [ngModel]="selectedBEType" (ngModelChange)="onBEChange($event)" name="setBEType" class="dropdown">
-              <option [ngValue]="be" *ngFor="let be of product.businessExtensionType">{{be.bEName}}</option>
-            </select> -->
-          <label type="text" class="input-length">{{product.businessExtensionType}}</label>
+          <div class="col-md-6">
+            <label>Business Extension</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.businessExtensionType}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Router</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <!-- <select [ngModel]="selectedRouterType" (ngModelChange)="onRouterChange($event)" name="setRouterType" class="dropdown">
-              <option [ngValue]="router" *ngFor="let router of product.routerType">{{router.routerName}}</option>
-            </select> -->
-          <label type="text" class="input-length">{{product.routerType}}</label>
+          <div class="col-md-6">
+            <label>Router</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.routerType}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Base Charges</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <label type="text" class="input-length">{{product.price.basePrice}}</label>
+          <div class="col-md-6">
+            <label>Base Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.basePrice}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Shipping Charges</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <label type="text" class="input-length">{{product.price.shippingCharge}}</label>
+          <div class="col-md-6">
+            <label>Shipping Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.shippingPrice}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Total Charges</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <label type="text" class="input-length">{{product.price.total}}</label>
+          <div class="col-md-6">
+            <label>Discount Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.discount}}</label>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Discount Charges</label>
-        </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
         <div class="col-md-6">
-          <label type="text" class="input-length">{{product.price.discount}}</label></div>
+          <div class="col-md-6">
+            <label>Total Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.total}}</label>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <label>Discount Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.discount}}</label>
+          </div>
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <div class="row padding-top">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <!-- <button type="submit" class="btn input-length">
+              Back
+            </button> -->
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn input-length">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </tr>
+  </table>
 </ngForm>
+
+<!-- <div class="container">
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </div>
+      <div id="collapseThree" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

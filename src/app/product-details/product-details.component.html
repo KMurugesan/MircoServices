@@ -1,5 +1,5 @@
-<ngForm>
-  <div class="container-fluid">
+<div class="container-fluid">
+  <ngForm>
     <div class="row padding-top">
       <div class="col-md-12">
         <div class="col-md-3"></div>
@@ -8,10 +8,28 @@
             <label>Product</label>
           </div>
           <div class="col-md-6">
-            <select [(ngModel)]="selectedProductType" (ngModelChange)="onProductChange($event)" name="setProductType"
-              class="dropdown">
+            <select [(ngModel)]="selectedProductType" (ngModelChange)="onProductChange($event)" name="setProductType" class="dropdown">
               <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productName}}</option>
             </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ngForm>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Transport</label>
+          </div>
+          <div class="col-md-6">
+            <input formControlName="transportType" required class="input-length" placeholder="Transport Type" />
+            <div class="alert  alert-danger" *ngIf="productForm.get('transportType').hasError('required') && productForm.get('transportType').touched">
+              Client Name is required
+            </div>
           </div>
         </div>
       </div>
@@ -21,148 +39,128 @@
         <div class="col-md-3"></div>
         <div class="col-md-9">
           <div class="col-md-3">
-            <label>Transport</label>
+            <label>Bandwidth</label>
           </div>
           <div class="col-md-6">
-            <!-- <select [ngModel]="selectedTransportType" (ngModelChange)="onTransportChange($event)" name="setTransportType"
-              class="dropdown">
-              <option [ngValue]="transport" *ngFor="let transport of product.transportType">{{transport.transportName}}</option>
-            </select> -->
-            <input type="text" class="input-length" [(ngModel)]="product.transportType" name="setTransportType" />
+            <input placeholder="Bandwidth" formControlName="bandwidthType" required class="input-length" />
+            <div class="alert  alert-danger" *ngIf="productForm.get('bandwidthType').hasError('required') && productForm.get('bandwidthType').touched">
+              Client Name is required
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Bandwidth</label>
-        </div>
-        <div class="col-md-6">
-          <!-- <select [ngModel]="selectedBandwidthType" (ngModelChange)="onBandwidthChange($event)" name="setBandwidthType"
-            class="dropdown">
-            <option [ngValue]="bandwidth" *ngFor="let bandwidth of product.bandwidthType">{{bandwidth.bandwidthName}}</option>
-          </select> -->
-          <input type="text" class="input-length" [(ngModel)]="product.bandwidthType" name="setBandwidthType" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Building Extension</label>
-        </div>
-        <div class="col-md-6">
-          <!-- <select [ngModel]="selectedBEType" (ngModelChange)="onBEChange($event)" name="setBEType" class="dropdown">
-            <option [ngValue]="be" *ngFor="let be of product.businessExtensionType">{{be.bEName}}</option>
-          </select> -->
-          <input type="text" class="input-length" [(ngModel)]="product.businessExtensionType" name="setBusinessExtensionType" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Router</label>
-        </div>
-        <div class="col-md-6">
-          <!-- <select [ngModel]="selectedRouterType" (ngModelChange)="onRouterChange($event)" name="setRouterType" class="dropdown">
-            <option [ngValue]="router" *ngFor="let router of product.routerType">{{router.routerName}}</option>
-          </select> -->
-          <input type="text" class="input-length" [(ngModel)]="product.routerType" name="setRouterType" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Base Charges</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" class="input-length" [(ngModel)]="product.price.basePrice" name="setBasePrice" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Shipping Charges</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" class="input-length" [(ngModel)]="product.price.shippingCharge" name="setShippingPrice" /></div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Total Charges</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" class="input-length" [(ngModel)]="product.price.total" name="setTotalPrice" /> </div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-          <label>Discount Charges</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" class="input-length" [(ngModel)]="product.price.discount" name="setDiscountPrice" /></div>
-      </div>
-    </div>
-  </div>
-  <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
-          <div class="dropdown">
-            <button type="submit" class="btn input-length" (click)="persistProductDetails(product)">
-              Submit
-            </button>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Building Extension</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Building Extension" formControlName="businessExtensionType" required class="input-length" />
+            <div class="alert  alert-danger" *ngIf="productForm.get('businessExtensionType').hasError('required') && productForm.get('businessExtensionType').touched">
+              Client Name is required
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- <div class="row padding-top">
-    <div class="col-md-12">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
-          <div class="dropdown">
-            <button type="submit" class="btn">
-              Submit
-            </button>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Router</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Router" formControlName="routerType" required class="input-length" />
+            <div class="alert  alert-danger" *ngIf="productForm.get('routerType').hasError('required') && productForm.get('routerType').touched">
+              Client Name is required
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
-</ngForm>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Base Charges</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Base Charges" formControlName="basePrice" required class="input-length" />
+            <div class="alert  alert-danger" *ngIf="productForm.get('basePrice').hasError('required') && productForm.get('basePrice').touched">
+              Client Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Shipping Charges</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Shipping Charges" formControlName="shippingPrice" required class="input-length" />
+          </div>
+          <div class="alert  alert-danger" *ngIf="productForm.get('shippingPrice').hasError('required') && productForm.get('shippingPrice').touched">
+            Client Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Total Charges</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Total Charges" formControlName="total" required class="input-length" />
+          </div>
+          <div class="alert  alert-danger" *ngIf="productForm.get('total').hasError('required') && productForm.get('total').touched">
+            Client Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+            <label>Discount Charges</label>
+          </div>
+          <div class="col-md-6">
+            <input placeholder="Discount Charges" formControlName="discount" required class="input-length" />
+          </div>
+          <div class="alert  alert-danger" *ngIf="productForm.get('discount').hasError('required') && productForm.get('discount').touched">
+            Client Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row padding-top">
+      <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <div class="dropdown">
+              <button type="submit" style=" color: crimson;" class="btn input-length" (click)="persistProductDetails(product)" [disabled]="productForm.invalid">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

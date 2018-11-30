@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductDetails } from './../model/ProductDetails';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -8,11 +9,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  productForm: FormGroup;
+
   product: ProductDetails;
 
-  // @Output() emit_product: EventEmitter<ProductDetails> = new EventEmitter<ProductDetails>();
-
-  // @Output() products: EventEmitter<ProductDetails> = new EventEmitter<ProductDetails>();
+  // productType: FormControl;
+  transportType: FormControl;
+  bandwidthType: FormControl;
+  businessExtensionType: FormControl;
+  routerType: FormControl;
+  basePrice: FormControl;
+  shippingPrice: FormControl;
+  total: FormControl;
+  discount: FormControl;
 
   productTypes = [{ productName: 'Vodafone', productType: 'Thunder' },
   { productName: 'Airtel', productType: 'Storm' },
@@ -20,31 +29,9 @@ export class ProductDetailsComponent implements OnInit {
   { productName: 'BSNL', productType: 'SFast' }];
   selectedProductType = this.productTypes[1];
 
-  transportTypes = [{ transportName: 'Vodafone', transportType: 'Thunder' },
-  { transportName: 'Airtel', transportType: 'Storm' },
-  { transportName: 'Aircel', transportType: 'Fast' },
-  { transportName: 'BSNL', transportType: 'SFast' }];
-  selectedTransportType = this.transportTypes[1];
-
-  bandwidthTypes = [{ bandwidthName: 'Vodafone', bandwidthType: 'Thunder' },
-  { bandwidthName: 'Airtel', bandwidthType: 'Storm' },
-  { bandwidthName: 'Aircel', bandwidthType: 'Fast' },
-  { bandwidthName: 'BSNL', bandwidthType: 'SFast' }];
-  selectedBandwidthType = this.bandwidthTypes[1];
-
-  beTypes = [{ bEName: 'Vodafone', bEType: 'Thunder' },
-  { bEName: 'Airtel', bEType: 'Storm' },
-  { bEName: 'Aircel', bEType: 'Fast' },
-  { bEName: 'BSNL', bEType: 'SFast' }];
-  selectedBEType = this.beTypes[1];
-
-  routerTypes = [{ routerName: 'Vodafone', routerType: 'Thunder' },
-  { routerName: 'Airtel', routerType: 'Storm' },
-  { routerName: 'Aircel', routerType: 'Fast' },
-  { routerName: 'BSNL', routerType: 'SFast' }];
-  selectedRouterType = this.routerTypes[1];
-
   constructor() {
+    this.buildFormControlsInd();
+    this.buildProductFormControls();
     this.product = new ProductDetails();
     this.loadProductType();
     console.log(this.product);
@@ -65,35 +52,47 @@ export class ProductDetailsComponent implements OnInit {
   onProductChange($event) {
     console.log($event);
     this.selectedProductType = $event;
-    // this.transportTypes =
-    // this.product.productType. = $event;
   }
-
-  // onTransportChange(newObj) {
-  //   console.log(newObj);
-  //   this.selectedTransportType = newObj;
-  //   // this.product.transportType.push(this.selectedTransportType);
-  // }
-
-  // onBandwidthChange(newObj) {
-  //   console.log(newObj);
-  //   this.selectedBandwidthType = newObj;
-  //   // this.product.bandwidthType = this.selectedBandwidthType;
-  // }
-
-  // onBEChange(newObj) {
-  //   console.log(newObj);
-  //   this.selectedBEType = newObj;
-  //   // this.product.businessExtensionType = this.selectedBEType;
-  // }
-
-  // onRouterChange($event) {
-  //   console.log($event);
-  //   this.selectedRouterType = $event;
-  //   // this.product.routerType = this.selectedRouterType;
-  // }
 
   persistProductDetails(product) {
     console.log(product);
+  }
+
+  onSubmit() {
+    // this.product.productType = this.productForm.get('productType').value;
+    this.product.transportType = this.productForm.get('transportType').value;
+    this.product.bandwidthType = this.productForm.get('bandwidthType').value;
+    this.product.businessExtensionType = this.productForm.get('businessExtensoinType').value;
+    this.product.routerType = this.productForm.get('routerType').value;
+    this.product.price.basePrice = this.productForm.get('basePrice').value;
+    this.product.price.shippingPrice = this.productForm.get('shippingPrice').value;
+    this.product.price.total = this.productForm.get('total').value;
+    this.product.price.discount = this.productForm.get('discount').value;
+  }
+
+  buildFormControlsInd() {
+    // this.productType = new FormControl('', [Validators.required]);
+    this.transportType = new FormControl('', [Validators.required]);
+    this.bandwidthType = new FormControl('', [Validators.required]);
+    this.businessExtensionType = new FormControl('', [Validators.required]);
+    this.routerType = new FormControl('', [Validators.required]);
+    this.basePrice = new FormControl('', [Validators.required]);
+    this.shippingPrice = new FormControl('');
+    this.total = new FormControl('', [Validators.required]);
+    this.discount = new FormControl('', [Validators.required]);
+  }
+
+  buildProductFormControls() {
+    this.productForm = new FormGroup({
+      // productType: this.productType,
+      transportType: this.transportType,
+      bandwidthType: this.bandwidthType,
+      businessExtensionType: this.businessExtensionType,
+      routerType: this.routerType,
+      basePrice: this.basePrice,
+      shippingPrice: this.shippingPrice,
+      total: this.total,
+      discount: this.discount
+    });
   }
 }
