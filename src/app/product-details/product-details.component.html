@@ -8,8 +8,8 @@
             <label>Product</label>
           </div>
           <div class="col-md-6">
-            <select [(ngModel)]="selectedProductType" (ngModelChange)="onProductChange($event)" name="setProductType" class="dropdown">
-              <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productName}}</option>
+            <select (change)="onProductChange($event)" name="setProductType" class="dropdown">
+              <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productType}}</option>
             </select>
           </div>
         </div>

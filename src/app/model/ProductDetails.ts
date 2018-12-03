@@ -1,5 +1,7 @@
 import { Price } from './Price';
 export class ProductDetails {
+  productId: number;
+  productName: string;
   productType: any;
   transportType: String;
   bandwidthType: String;

@@ -1,6 +1,6 @@
 import { ClientAddress } from './../model/ClientAddress';
 import { ClientDetails } from './../model/clientDetails';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 // import { DataService } from '../../_services/data.service';
 
@@ -11,8 +11,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class ClientDetailsComponent implements OnInit {
   clientForm: FormGroup;
-
-  details: ClientDetails;
+  @Input() details: ClientDetails;
 
   clientName: FormControl;
   companyName: FormControl;
@@ -27,15 +26,13 @@ export class ClientDetailsComponent implements OnInit {
   county: FormControl;
 
   constructor(private fb: FormBuilder) {
-    this.buildFormControlsInd();
-    this.buildClientFormControls();
     this.details = new ClientDetails();
   }
 
   ngOnInit() {
+    this.buildFormControlsInd();
     this.buildClientFormControls();
-    console.log('Client Details');
-    this.loadForms();
+    this.loadClientDetails();
   }
 
   onSubmit() {
@@ -50,17 +47,6 @@ export class ClientDetailsComponent implements OnInit {
     this.details.address.state = this.clientForm.get('state').value;
     this.details.address.zipCode = this.clientForm.get('zipCode').value;
     this.details.address.county = this.clientForm.get('county').value;
-  }
-
-  loadForms() {
-    // this.dataService.getClientDetails("PRFT").subscribe(
-    //   res => {
-    //     console.log(res);
-    //   },
-    //   error => {
-    //     console.log('ERROR :' + error);
-    //
-    // );
   }
 
   buildFormControlsInd() {
@@ -91,6 +77,23 @@ export class ClientDetailsComponent implements OnInit {
       zipCode: this.zipCode,
       county: this.county
     });
+  }
+
+  loadClientDetails() {
+    if (this.details !== undefined) {
+      this.clientName.setValue(this.details.clientName);
+      this.companyName.setValue(this.details.company);
+      this.preferredContactMethod.setValue(this.details.preferredContactMethod);
+      this.email.setValue(this.details.email);
+      this.extension.setValue(this.details.extension);
+      this.addressLine1.setValue(this.details.address.addressLine1);
+      this.addressLine2.setValue(this.details.address.addressLine2);
+      this.state.setValue(this.details.address.state);
+      this.city.setValue(this.details.address.city);
+      this.county.setValue(this.details.address.county);
+      this.zipCode.setValue(this.details.address.zipCode);
+      console.log(this.details);
+    }
   }
 
   persistClientDetails(details) {

@@ -88,7 +88,7 @@
             <label>Company Address</label>
           </div>
           <div class="col-md-3">
-            <input placeholder=" Street Address" formControlName="addressLine1" required maxlength="20" />
+            <input placeholder="Address Line 1" formControlName="addressLine1" required maxlength="20" />
             <div class="alert  alert-danger" *ngIf="clientForm.get('addressLine1').hasError('required') && clientForm.get('addressLine1').touched">
               Address Line 1 is required
             </div>

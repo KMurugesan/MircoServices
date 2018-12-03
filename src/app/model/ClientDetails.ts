@@ -8,6 +8,11 @@ export class ClientDetails {
   extension: number;
   preferredContactMethod: string;
   address: ClientAddress;
+  productId: number;
+  productName: string;
+  status: string;
+  errorCd: number;
+  errorMsg: string;
 
   constructor() {
     this.address = new ClientAddress();

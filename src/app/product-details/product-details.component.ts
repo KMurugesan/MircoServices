@@ -1,6 +1,7 @@
+import { DataService } from './../_services/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductDetails } from './../model/ProductDetails';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
@@ -11,9 +12,9 @@ export class ProductDetailsComponent implements OnInit {
 
   productForm: FormGroup;
 
-  product: ProductDetails;
+  @Input() product: ProductDetails;
 
-  // productType: FormControl;
+  productType: FormControl;
   transportType: FormControl;
   bandwidthType: FormControl;
   businessExtensionType: FormControl;
@@ -29,29 +30,23 @@ export class ProductDetailsComponent implements OnInit {
   { productName: 'BSNL', productType: 'SFast' }];
   selectedProductType = this.productTypes[1];
 
-  constructor() {
-    this.buildFormControlsInd();
-    this.buildProductFormControls();
+  constructor(private dataService: DataService) {
     this.product = new ProductDetails();
-    this.loadProductType();
-    console.log(this.product);
-  }
-
-  loadProductType() {
-    this.product.productType = this.productTypes;
-    // this.product.transportType = this.transportTypes;
-    // this.product.bandwidthType = this.bandwidthTypes;
-    // this.product.businessExtensionType = this.beTypes;
-    // this.product.routerType = this.routerTypes;
-    return this.product;
   }
 
   ngOnInit() {
+    this.product.productType = this.productTypes;
+    console.log(this.product.productType);
+    this.buildFormControlsInd();
+    this.buildProductFormControls();
+    this.loadProductDetails();
+    console.log(this.product);
   }
 
   onProductChange($event) {
     console.log($event);
     this.selectedProductType = $event;
+    this.getProductDetails();
   }
 
   persistProductDetails(product) {
@@ -59,7 +54,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.product.productType = this.productForm.get('productType').value;
+    this.product.productType = this.productForm.get('productType').value;
     this.product.transportType = this.productForm.get('transportType').value;
     this.product.bandwidthType = this.productForm.get('bandwidthType').value;
     this.product.businessExtensionType = this.productForm.get('businessExtensoinType').value;
@@ -71,7 +66,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   buildFormControlsInd() {
-    // this.productType = new FormControl('', [Validators.required]);
+    this.productType = new FormControl('', [Validators.required]);
     this.transportType = new FormControl('', [Validators.required]);
     this.bandwidthType = new FormControl('', [Validators.required]);
     this.businessExtensionType = new FormControl('', [Validators.required]);
@@ -84,7 +79,7 @@ export class ProductDetailsComponent implements OnInit {
 
   buildProductFormControls() {
     this.productForm = new FormGroup({
-      // productType: this.productType,
+      productType: this.productType,
       transportType: this.transportType,
       bandwidthType: this.bandwidthType,
       businessExtensionType: this.businessExtensionType,
@@ -94,5 +89,33 @@ export class ProductDetailsComponent implements OnInit {
       total: this.total,
       discount: this.discount
     });
+  }
+
+  getProductDetails() {
+    // this.dataService.getClientDetails(clientName).subscribe(res => {
+    //   this.clientDetail = res;
+    // });
+    this.product = this.dataService.getProductDetails(this.product.productId, this.product.productName);
+    if (this.product !== undefined) {
+      // this.clientDetailsAvailable = true;
+      console.log(this.product);
+      this.loadProductDetails();
+      // this.productDetail.productId = this.clientDetail.productId;
+      // this.productDetail.productName = this.clientDetail.productName;
+    } else {
+      // this.showErrorMessage = true;
+    }
+  }
+
+  loadProductDetails() {
+    this.productType.setValue(this.product.productType);
+    this.transportType.setValue(this.product.transportType);
+    this.bandwidthType.setValue(this.product.bandwidthType);
+    this.routerType.setValue(this.product.routerType);
+    this.businessExtensionType.setValue(this.product.businessExtensionType);
+    this.basePrice.setValue(this.product.price.basePrice);
+    this.shippingPrice.setValue(this.product.price.shippingPrice);
+    this.total.setValue(this.product.price.total);
+    this.discount.setValue(this.product.price.discount);
   }
 }
