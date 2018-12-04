@@ -2,7 +2,7 @@ import { ClientAddress } from './../model/ClientAddress';
 import { ClientDetails } from './../model/clientDetails';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-// import { DataService } from '../../_services/data.service';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-client-details',
@@ -25,7 +25,7 @@ export class ClientDetailsComponent implements OnInit {
   zipCode: FormControl;
   county: FormControl;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
     this.details = new ClientDetails();
   }
 
@@ -96,7 +96,14 @@ export class ClientDetailsComponent implements OnInit {
     }
   }
 
-  persistClientDetails(details) {
-    console.log(details);
+  persistClientDetails() {
+    this.onSubmit();
+    this.dataService.persistClientDetails(this.details);
+    console.log(this.details);
+    // this.dataService.persistClientDetails(this.details).subscribe(res => {
+    //   console.log(res);
+    // }, err => {
+
+    // });
   }
 }

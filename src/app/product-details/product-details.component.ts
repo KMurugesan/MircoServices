@@ -49,15 +49,11 @@ export class ProductDetailsComponent implements OnInit {
     this.getProductDetails();
   }
 
-  persistProductDetails(product) {
-    console.log(product);
-  }
-
   onSubmit() {
-    this.product.productType = this.productForm.get('productType').value;
+    this.product.productType = this.selectedProductType.productType;
     this.product.transportType = this.productForm.get('transportType').value;
     this.product.bandwidthType = this.productForm.get('bandwidthType').value;
-    this.product.businessExtensionType = this.productForm.get('businessExtensoinType').value;
+    this.product.businessExtensionType = this.productForm.get('businessExtensionType').value;
     this.product.routerType = this.productForm.get('routerType').value;
     this.product.price.basePrice = this.productForm.get('basePrice').value;
     this.product.price.shippingPrice = this.productForm.get('shippingPrice').value;
@@ -117,5 +113,16 @@ export class ProductDetailsComponent implements OnInit {
     this.shippingPrice.setValue(this.product.price.shippingPrice);
     this.total.setValue(this.product.price.total);
     this.discount.setValue(this.product.price.discount);
+  }
+
+  persistProductDetails() {
+    this.onSubmit();
+    this.dataService.persistProductDetails(this.product);
+    console.log(this.product);
+    // this.dataService.persistProductDetails(this.product).subscribe(res => {
+    //   console.log(res);
+    // }, err => {
+
+    // });
   }
 }

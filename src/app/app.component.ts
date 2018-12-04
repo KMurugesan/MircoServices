@@ -41,8 +41,8 @@ export class AppComponent {
       this.creatingClientDetails = false;
       this.clientDetailsAvailable = true;
       console.log(this.clientDetail);
-      this.productDetail.productId = this.clientDetail.productId;
-      this.productDetail.productName = this.clientDetail.productName;
+      this.productDetail.productId = this.clientDetail.product.productId;
+      this.productDetail.productName = this.clientDetail.product.productName;
     } else {
       this.showErrorMessage = true;
     }

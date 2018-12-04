@@ -5,7 +5,9 @@
       <div class="col-md-4">
         <div class="search-container">
           <input type="text" placeholder="Search.." name="search">
-          <button type="submit"  (click)="getClientDetails(search)">
+          <button type="submit" (click)="createClientDetail(clientDetail)">Create
+          </button>
+          <button type="submit" (click)="getClientDetails(search)">
             <i class="fa fa-search"></i>
           </button>
         </div>
@@ -18,42 +20,48 @@
         <div id="accordion">
           <div class="panel box box-primary">
             <div class="box-header with-border">
-              <label style="padding-left: 45%" data-toggle="collapse" data-target="#clientaccordion" aria-expanded="false" class="collapsed">
+              <label style="padding-left: 45%" data-toggle="collapse" data-target="#clientaccordion" aria-expanded="false"
+                class="collapsed">
                 <div class="row">
                   <div class="col-md-12 header">
                     <h4>Client Details</h4>
                   </div>
                 </div>
               </label>
-              <div id="clientaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;" data-parent="#accordion">
+              <div id="clientaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;"
+                data-parent="#accordion">
                 <app-client-details [details]="clientDetail"></app-client-details>
               </div>
             </div>
           </div>
           <div class="panel box box-primary">
             <div class="box-header with-border">
-              <label style="padding-left: 45%" data-toggle="collapse" data-target="#productaccordion" aria-expanded="false" class="collapsed">
+              <label style="padding-left: 45%" data-toggle="collapse" data-target="#productaccordion" aria-expanded="false"
+                class="collapsed">
                 <div class="row">
                   <div class="col-md-12 header" style="text-align: center">
                     <h4>Product Details</h4>
                   </div>
                 </div>
               </label>
-              <div id="productaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;" data-parent="#accordion">
+              <div id="productaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;"
+                data-parent="#accordion">
                 <app-product-details [product]="productDetail"></app-product-details>
               </div>
             </div>
           </div>
           <div class="panel box box-primary">
             <div class="box-header with-border">
-              <label style="padding-left: 45%" data-toggle="collapse" data-target="#reviewaccordion" aria-expanded="false" class="collapsed">
+              <label style="padding-left: 45%" data-toggle="collapse" data-target="#reviewaccordion" aria-expanded="false"
+                class="collapsed">
                 <div class="row">
                   <div class="col-md-12 header" style="text-align: center">
                     <h4>Review</h4>
                   </div>
                 </div>
               </label>
-              <div id="reviewaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;" data-parent="#accordion">
+              <div id="reviewaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;"
+                data-parent="#accordion">
                 <app-review></app-review>
               </div>
             </div>
@@ -68,8 +76,13 @@
         <h3 class="panel-title">Data unavailable</h3>
       </div>
       <div class="panel-body">
-        <button type="submit" (click)="createClientDetail(clientDetail)">Create
-        </button>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <button type="submit" (click)="createClientDetail(clientDetail)">Create
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>

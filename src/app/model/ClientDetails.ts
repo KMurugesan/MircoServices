@@ -1,3 +1,4 @@
+import { ProductDetails } from './ProductDetails';
 import { ClientAddress } from './ClientAddress';
 
 export class ClientDetails {
@@ -8,13 +9,13 @@ export class ClientDetails {
   extension: number;
   preferredContactMethod: string;
   address: ClientAddress;
-  productId: number;
-  productName: string;
+  product: ProductDetails;
   status: string;
   errorCd: number;
   errorMsg: string;
 
   constructor() {
     this.address = new ClientAddress();
+    this.product = new ProductDetails();
   }
 }

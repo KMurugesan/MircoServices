@@ -108,13 +108,13 @@
             <label></label>
           </div>
           <div class="col-md-3">
-            <input placeholder=" City" formControlName="city" required maxlength="10" />
+            <input placeholder=" City" formControlName="city" required maxlength="20" />
             <div class="alert  alert-danger" *ngIf="clientForm.get('city').hasError('required') && clientForm.get('city').touched">
               City is required
             </div>
           </div>
           <div class="col-md-3">
-            <input placeholder=" State/ Province/ Region" formControlName="state" required maxlength="10" />
+            <input placeholder=" State/ Province/ Region" formControlName="state" required maxlength="20" />
             <div class="alert  alert-danger" *ngIf="clientForm.get('state').hasError('required') && clientForm.get('state').touched">
               State is required
             </div>
@@ -153,7 +153,8 @@
           </div>
           <div class="col-md-6">
             <div class="dropdown">
-              <button type="submit" style=" color: crimson;" class="btn input-length" [disabled]="clientForm.invalid" (click)="persistClientDetails(details)">
+              <button type="submit" style=" color: crimson;" class="btn input-length" [disabled]="clientForm.invalid"
+                (click)="persistClientDetails()">
                 Next
               </button>
             </div>

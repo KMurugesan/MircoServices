@@ -17,7 +17,6 @@ export class DataService {
   }
 
   getClientDetails(clientName: string): ClientDetails {
-
     // return this.httpClient.get<ClientDetails>('/v-employee/loadEmployee');
     // .map(res => res.entity);
     // return this.clientDetailsTest;
@@ -27,8 +26,8 @@ export class DataService {
   mockClientDetails() {
     this.clientDetailsTest.address.addressLine1 = '3/29 Rayapuram street';
     this.clientDetailsTest.address.addressLine2 = 'Kaveriyammapatty';
-    this.clientDetailsTest.productId = 12;
-    this.clientDetailsTest.productName = 'Vodafone';
+    this.clientDetailsTest.product.productId = 12;
+    this.clientDetailsTest.product.productName = 'Vodafone';
     return this.clientDetailsTest;
   }
 
@@ -42,4 +41,13 @@ export class DataService {
     this.productDetailsTest.bandwidthType = '5MB';
     return this.productDetailsTest;
   }
+
+  persistClientDetails(details: ClientDetails): Observable<ClientDetails> {
+    return this.httpClient.post<ClientDetails>('', details);
+  }
+
+  persistProductDetails(product: ProductDetails): Observable<ProductDetails> {
+    return this.httpClient.post<ProductDetails>('', product);
+  }
+
 }
