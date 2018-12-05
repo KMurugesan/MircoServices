@@ -38,7 +38,7 @@ export class ClientDetailsComponent implements OnInit {
   onSubmit() {
     this.details.clientName = this.clientForm.get('clientName').value;
     this.details.company = this.clientForm.get('companyName').value;
-    this.details.preferredContactMethod = this.clientForm.get('preferredContactMethod').value;
+    // this.details.preferredContactMethod = this.clientForm.get('preferredContactMethod').value;
     this.details.email = this.clientForm.get('email').value;
     this.details.extension = this.clientForm.get('extension').value;
     this.details.address.addressLine1 = this.clientForm.get('addressLine1').value;
@@ -52,7 +52,7 @@ export class ClientDetailsComponent implements OnInit {
   buildFormControlsInd() {
     this.clientName = new FormControl('', [Validators.required]);
     this.companyName = new FormControl('', [Validators.required]);
-    this.preferredContactMethod = new FormControl('', [Validators.required]);
+    // this.preferredContactMethod = new FormControl('', [Validators.required]);
     this.email = new FormControl('', [Validators.email, Validators.required]);
     this.extension = new FormControl('', [Validators.required]);
     this.addressLine1 = new FormControl('', [Validators.required]);
@@ -67,7 +67,7 @@ export class ClientDetailsComponent implements OnInit {
     this.clientForm = new FormGroup({
       clientName: this.clientName,
       companyName: this.companyName,
-      preferredContactMethod: this.preferredContactMethod,
+      // preferredContactMethod: this.preferredContactMethod,
       email: this.email,
       extension: this.extension,
       addressLine1: this.addressLine1,
@@ -83,7 +83,7 @@ export class ClientDetailsComponent implements OnInit {
     if (this.details !== undefined) {
       this.clientName.setValue(this.details.clientName);
       this.companyName.setValue(this.details.company);
-      this.preferredContactMethod.setValue(this.details.preferredContactMethod);
+      // this.preferredContactMethod.setValue(this.details.preferredContactMethod);
       this.email.setValue(this.details.email);
       this.extension.setValue(this.details.extension);
       this.addressLine1.setValue(this.details.address.addressLine1);

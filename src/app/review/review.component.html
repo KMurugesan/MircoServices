@@ -5,10 +5,10 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="col-md-6">
-            <label>Product</label>
+            <label>Client Name</label>
           </div>
           <div class="col-md-6">
-            <label type="text" class="input-length">{{product.productType}}</label>
+            <label type="text" class="input-length">{{clientDetail.clientName}}</label>
           </div>
         </div>
       </div>
@@ -18,10 +18,10 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="col-md-6">
-            <label>Transport</label>
+            <label>Company Name</label>
           </div>
           <div class="col-md-6">
-            <label type="text" class="input-length">{{product.transportType}}</label>
+            <label type="text" class="input-length">{{clientDetail.company}}</label>
           </div>
         </div>
       </div>
@@ -31,10 +31,10 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="col-md-6">
-            <label>Bandwidth</label>
+            <label>Email</label>
           </div>
           <div class="col-md-6">
-            <label type="text" class="input-length">{{product.bandwidthType}}</label>
+            <label type="text" class="input-length">{{clientDetail.email}}</label>
           </div>
         </div>
       </div>
@@ -44,15 +44,15 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="col-md-6">
-            <label>Business Extension</label>
+            <label>Extension</label>
           </div>
           <div class="col-md-6">
-            <label type="text" class="input-length">{{product.businessExtensionType}}</label>
+            <label type="text" class="input-length">{{clientDetail.extension}}</label>
           </div>
         </div>
       </div>
     </tr>
-    <tr>
+    <!-- <tr>
       <div class="row padding-top">
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -64,42 +64,16 @@
           </div>
         </div>
       </div>
-    </tr>
+    </tr> -->
     <tr>
       <div class="row padding-top">
         <div class="col-md-3"></div>
         <div class="col-md-6">
           <div class="col-md-6">
-            <label>Base Charges</label>
+            <label>Product</label>
           </div>
           <div class="col-md-6">
-            <label type="text" class="input-length">{{product.price.basePrice}}</label>
-          </div>
-        </div>
-      </div>
-    </tr>
-    <tr>
-      <div class="row padding-top">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <div class="col-md-6">
-            <label>Shipping Charges</label>
-          </div>
-          <div class="col-md-6">
-            <label type="text" class="input-length">{{product.price.shippingPrice}}</label>
-          </div>
-        </div>
-      </div>
-    </tr>
-    <tr>
-      <div class="row padding-top">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <div class="col-md-6">
-            <label>Discount Charges</label>
-          </div>
-          <div class="col-md-6">
-            <label type="text" class="input-length">{{product.price.discount}}</label>
+            <label type="text" class="input-length">{{clientDetail.productName}}</label>
           </div>
         </div>
       </div>
@@ -129,6 +103,19 @@
           </div>
         </div>
       </div>
+    </tr>
+    <tr>
+      <!-- <div class="row padding-top">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <label>Total Charges</label>
+          </div>
+          <div class="col-md-6">
+            <label type="text" class="input-length">{{product.price.total}}</label>
+          </div>
+        </div>
+      </div> -->
     </tr>
     <tr>
       <div class="row padding-top">

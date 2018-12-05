@@ -19,6 +19,8 @@ export class AppComponent {
   creatingClientDetails = true;
   productDetail: ProductDetails;
   clientDetail: ClientDetails;
+  clientName: string;
+  status: string;
 
   constructor(private dataService: DataService) {
     this.clientDetail = new ClientDetails();
@@ -32,19 +34,30 @@ export class AppComponent {
     this.showErrorMessage = false;
   }
 
-  getClientDetails(clientName: string) {
-    // this.dataService.getClientDetails(clientName).subscribe(res => {
-    //   this.clientDetail = res;
-    // });
-    this.clientDetail = this.dataService.getClientDetails(clientName);
-    if (this.clientDetail !== undefined) {
-      this.creatingClientDetails = false;
-      this.clientDetailsAvailable = true;
-      console.log(this.clientDetail);
-      this.productDetail.productId = this.clientDetail.product.productId;
-      this.productDetail.productName = this.clientDetail.product.productName;
-    } else {
-      this.showErrorMessage = true;
-    }
+  getClientDetails() {
+    this.clientDetailsAvailable = true;
+    console.log(this.clientName);
+    this.dataService.getClientDetails(this.clientName).subscribe(res => {
+      if (res !== undefined) {
+        this.clientDetail = res;
+        this.creatingClientDetails = false;
+        this.clientDetailsAvailable = true;
+        console.log(this.clientDetail);
+        this.clientDetail.status = 'C';
+        this.productDetail.productId = this.clientDetail.product.productId;
+        this.productDetail.productName = this.clientDetail.product.productName;
+      } else {
+        this.showErrorMessage = true;
+      }
+    });
+  }
+
+  activatePlan() {
+    this.dataService.planAction(this.clientDetail.clientName, this.clientDetail.companyAddress, 'A');
+    console.log(this.clientDetail.clientName, this.clientDetail.company);
+  }
+
+  deActivatePlan() {
+    this.dataService.planAction(this.clientDetail.clientName, this.clientDetail.companyAddress, 'A');
   }
 }

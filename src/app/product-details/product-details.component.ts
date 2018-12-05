@@ -46,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
   onProductChange($event) {
     console.log($event);
     this.selectedProductType = $event;
-    this.getProductDetails();
+    this.getProductDetails(this.product.productId, this.product.productName);
   }
 
   onSubmit() {
@@ -87,20 +87,16 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  getProductDetails() {
-    // this.dataService.getClientDetails(clientName).subscribe(res => {
-    //   this.clientDetail = res;
-    // });
-    this.product = this.dataService.getProductDetails(this.product.productId, this.product.productName);
-    if (this.product !== undefined) {
-      // this.clientDetailsAvailable = true;
-      console.log(this.product);
-      this.loadProductDetails();
-      // this.productDetail.productId = this.clientDetail.productId;
-      // this.productDetail.productName = this.clientDetail.productName;
-    } else {
-      // this.showErrorMessage = true;
-    }
+  getProductDetails(productId: number, productName: string) {
+    this.dataService.getProductDetails(productId, productName).subscribe(res => {
+      if (res !== undefined) {
+        this.product = res;
+        console.log(this.product);
+        this.loadProductDetails();
+      } else {
+        // this.showErrorMessage = true;
+      }
+    });
   }
 
   loadProductDetails() {

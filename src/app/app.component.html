@@ -4,10 +4,10 @@
       <div class="col-md-3"></div>
       <div class="col-md-4">
         <div class="search-container">
-          <input type="text" placeholder="Search.." name="search">
+          <input type="text" [(ngModel)]="clientName" placeholder="Search..">
           <button type="submit" (click)="createClientDetail(clientDetail)">Create
           </button>
-          <button type="submit" (click)="getClientDetails(search)">
+          <button type="submit" (click)="getClientDetails()">
             <i class="fa fa-search"></i>
           </button>
         </div>
@@ -62,7 +62,18 @@
               </label>
               <div id="reviewaccordion" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;"
                 data-parent="#accordion">
-                <app-review></app-review>
+                <app-review [product]="productDetail" [clientDetail]="clientDetail"></app-review>
+              </div>
+            </div>
+          </div>
+          <div class="panel box box-primary">
+            <div class="box-header with-border">
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-success" (click)="activatePlan()">Activate</button>
+                  <button type="button" class="btn btn-danger" (click)="deActivatePlan()">Deactivate</button>
+                </div>
               </div>
             </div>
           </div>
