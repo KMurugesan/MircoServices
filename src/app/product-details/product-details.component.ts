@@ -113,12 +113,10 @@ export class ProductDetailsComponent implements OnInit {
 
   persistProductDetails() {
     this.onSubmit();
-    this.dataService.persistProductDetails(this.product);
-    console.log(this.product);
-    // this.dataService.persistProductDetails(this.product).subscribe(res => {
-    //   console.log(res);
-    // }, err => {
-
-    // });
+    this.dataService.persistProductDetails(this.product).subscribe(
+      product => {
+        console.log(product);
+      }
+    );
   }
 }

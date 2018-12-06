@@ -10,6 +10,7 @@ export class ClientDetails {
   preferredContactMethod: string;
   address: ClientAddress;
   product: ProductDetails;
+  action: string;
   status: string;
   errorCd: number;
   errorMsg: string;

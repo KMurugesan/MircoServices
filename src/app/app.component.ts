@@ -20,7 +20,8 @@ export class AppComponent {
   productDetail: ProductDetails;
   clientDetail: ClientDetails;
   clientName: string;
-  status: string;
+  status: 'P';
+  action: string;
 
   constructor(private dataService: DataService) {
     this.clientDetail = new ClientDetails();
@@ -32,6 +33,7 @@ export class AppComponent {
     this.creatingClientDetails = false;
     this.clientDetailsAvailable = true;
     this.showErrorMessage = false;
+    this.action = 'C';
   }
 
   getClientDetails() {
@@ -43,7 +45,8 @@ export class AppComponent {
         this.creatingClientDetails = false;
         this.clientDetailsAvailable = true;
         console.log(this.clientDetail);
-        this.clientDetail.status = 'C';
+        this.clientDetail.action = 'U';
+        this.clientDetail.status = this.status;
         this.productDetail.productId = this.clientDetail.product.productId;
         this.productDetail.productName = this.clientDetail.product.productName;
       } else {
@@ -53,11 +56,17 @@ export class AppComponent {
   }
 
   activatePlan() {
-    this.dataService.planAction(this.clientDetail.clientName, this.clientDetail.companyAddress, 'A');
-    console.log(this.clientDetail.clientName, this.clientDetail.company);
+    this.clientDetail.status = 'A';
+    this.dataService.planAction(this.clientDetail).subscribe(status => {
+      console.log(status);
+    });
+    console.log(this.clientDetail);
   }
 
   deActivatePlan() {
-    this.dataService.planAction(this.clientDetail.clientName, this.clientDetail.companyAddress, 'A');
+    this.clientDetail.status = 'D';
+    this.dataService.planAction(this.clientDetail).subscribe(status => {
+      console.log(status);
+    });
   }
 }

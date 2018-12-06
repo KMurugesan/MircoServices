@@ -19,21 +19,13 @@ export class DataService {
     this.productDetailsTest = new ProductDetails();
   }
 
-  getClientDetails(clientName: string): Observable<ClientDetails> {
+  getClientDetails(clientName): Observable<ClientDetails> {
     const _headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*'
     });
-    const params = new HttpParams().set('company', clientName);
-    return this.httpClient.get<any>('http://10.113.34.203:8081/client/findByCompany/', { headers: _headers, params })
-      .map(res => res.ClientDetails);
-  }
 
-  mockClientDetails() {
-    this.clientDetailsTest.address.addressLine1 = '3/29 Rayapuram street';
-    this.clientDetailsTest.address.addressLine2 = 'Kaveriyammapatty';
-    this.clientDetailsTest.product.productId = 12;
-    this.clientDetailsTest.product.productName = 'Vodafone';
-    return this.clientDetailsTest;
+    return this.httpClient.get<any>('http://10.113.34.211:8081/client/findByCompany/' + clientName, { headers: _headers })
+      .map(res => res.ClientDetails);
   }
 
   getProductDetails(productId: number, productName: string): Observable<ProductDetails> {
@@ -41,27 +33,33 @@ export class DataService {
       .map(res => res.ProductDetails);
   }
 
-  mockProductDetails() {
-    this.productDetailsTest.productType = this.productTypes;
-    this.productDetailsTest.transportType = 'abcd';
-    this.productDetailsTest.bandwidthType = '5MB';
-    return this.productDetailsTest;
-  }
-
   persistClientDetails(details: ClientDetails): Observable<ClientDetails> {
-    return this.httpClient.post<ClientDetails>('', details);
+    const options = this.options();
+    return this.httpClient.post<ClientDetails>('', details, options);
   }
 
   persistProductDetails(product: ProductDetails): Observable<ProductDetails> {
-    return this.httpClient.post<ProductDetails>('', product);
+    const options = this.options();
+    return this.httpClient.post<ProductDetails>('', product, options);
   }
 
-  planAction(clientName, companyName, action): Observable<any> {
-    const params = new HttpParams()
-      .set('clientName', clientName)
-      .set('companyName', companyName)
-      .set('action', action);
-    return this.httpClient.post<any>('', { params });
+  planAction(clientDetail: ClientDetails): Observable<any> {
+    console.log(clientDetail);
+    const options = this.options();
+    console.log(this.options);
+    return this.httpClient.put<any>('http://10.113.34.211:8081/client/updateStatus/', clientDetail, { headers: options.headers });
   }
 
+  private options() {
+    const _headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    });
+    const options = {
+      headers: _headers
+    };
+
+    console.log(options.headers);
+
+    return options;
+  }
 }

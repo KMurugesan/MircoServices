@@ -98,12 +98,10 @@ export class ClientDetailsComponent implements OnInit {
 
   persistClientDetails() {
     this.onSubmit();
-    this.dataService.persistClientDetails(this.details);
-    console.log(this.details);
-    // this.dataService.persistClientDetails(this.details).subscribe(res => {
-    //   console.log(res);
-    // }, err => {
-
-    // });
+    this.dataService.persistClientDetails(this.details).subscribe(
+      details => {
+        console.log(details);
+      }
+    );
   }
 }
