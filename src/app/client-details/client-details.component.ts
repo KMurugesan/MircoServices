@@ -36,11 +36,11 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.details.clientName = this.clientForm.get('clientName').value;
+    this.details.name = this.clientForm.get('clientName').value;
     this.details.company = this.clientForm.get('companyName').value;
     // this.details.preferredContactMethod = this.clientForm.get('preferredContactMethod').value;
     this.details.email = this.clientForm.get('email').value;
-    this.details.extension = this.clientForm.get('extension').value;
+    this.details.phone = this.clientForm.get('extension').value;
     this.details.address.addressLine1 = this.clientForm.get('addressLine1').value;
     this.details.address.addressLine2 = this.clientForm.get('addressLine2').value;
     this.details.address.city = this.clientForm.get('city').value;
@@ -81,11 +81,11 @@ export class ClientDetailsComponent implements OnInit {
 
   loadClientDetails() {
     if (this.details !== undefined) {
-      this.clientName.setValue(this.details.clientName);
+      this.clientName.setValue(this.details.name);
       this.companyName.setValue(this.details.company);
       // this.preferredContactMethod.setValue(this.details.preferredContactMethod);
       this.email.setValue(this.details.email);
-      this.extension.setValue(this.details.extension);
+      this.extension.setValue(this.details.phone);
       this.addressLine1.setValue(this.details.address.addressLine1);
       this.addressLine2.setValue(this.details.address.addressLine2);
       this.state.setValue(this.details.address.state);

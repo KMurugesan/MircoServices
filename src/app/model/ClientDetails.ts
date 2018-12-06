@@ -2,11 +2,11 @@ import { ProductDetails } from './ProductDetails';
 import { ClientAddress } from './ClientAddress';
 
 export class ClientDetails {
-  clientName: string;
+  name: string;
   company: string;
   companyAddress: string;
   email: string;
-  extension: number;
+  phone: number;
   preferredContactMethod: string;
   address: ClientAddress;
   product: ProductDetails;

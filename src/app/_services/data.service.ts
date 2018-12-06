@@ -24,30 +24,30 @@ export class DataService {
       'Access-Control-Allow-Origin': '*'
     });
 
-    return this.httpClient.get<any>('http://india-archana.perficient.com:8081/client/findByCompany/' + clientName, { headers: _headers })
+    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/findByCompany/' + clientName, { headers: _headers })
       .map(res => res.ClientDetails);
   }
 
   getProductDetails(productId: number, productName: string): Observable<ProductDetails> {
-    return this.httpClient.get<any>('http://india-archana.perficient.com:8081/client/product')
+    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/product')
       .map(res => res.ProductDetails);
   }
 
   persistClientDetails(details: ClientDetails): Observable<ClientDetails> {
     const options = this.options();
-    return this.httpClient.post<ClientDetails>('http://india-archana.perficient.com:8081/client/createUpdateClient', details, options);
+    return this.httpClient.post<ClientDetails>('http://india-saviya.perficient.com:8082/client/createUpdateClient', details, options);
   }
 
   persistProductDetails(product: ProductDetails): Observable<ProductDetails> {
     const options = this.options();
-    return this.httpClient.post<ProductDetails>('http://india-archana.perficient.com:8081', product, options);
+    return this.httpClient.post<ProductDetails>('http://india-saviya.perficient.com:8082', product, options);
   }
 
   planAction(clientDetail: ClientDetails): Observable<any> {
     console.log(clientDetail);
     const options = this.options();
     console.log(this.options);
-    return this.httpClient.put<any>('http://india-archana.perficient.com:8081/client/updateStatus/', clientDetail, { headers: options.headers });
+    return this.httpClient.put<any>('http://india-saviya.perficient.com:8082/client/updateStatus/', clientDetail, { headers: options.headers });
   }
 
   private options() {
