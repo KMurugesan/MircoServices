@@ -27,7 +27,7 @@ export class ReviewComponent implements OnInit {
   }
 
   loadProductType() {
-    console.log("Call Prduct lookup service");
+    console.log('Call Product lookup service');
     this.clientName = this.clientDetail.name;
     this.companyName = this.clientDetail.company;
     this.email = this.clientDetail.email;

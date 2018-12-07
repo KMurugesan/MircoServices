@@ -3,6 +3,7 @@ import { ClientDetails } from './../model/clientDetails';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DataService } from '../_services/data.service';
+declare var $: any;
 
 @Component({
   selector: 'app-client-details',
@@ -25,9 +26,13 @@ export class ClientDetailsComponent implements OnInit {
   zipCode: FormControl;
   county: FormControl;
 
+  clientNameOb: string;
+
   constructor(private fb: FormBuilder, private dataService: DataService) {
     this.details = new ClientDetails();
   }
+
+
 
   ngOnInit() {
     this.buildFormControlsInd();
@@ -100,7 +105,14 @@ export class ClientDetailsComponent implements OnInit {
     this.onSubmit();
     this.dataService.persistClientDetails(this.details).subscribe(
       details => {
+
         console.log(details);
+        if (details.name !== undefined) {
+          this.clientNameOb = details.name;
+          $('#success').modal({ show: true });
+        } else {
+          this.clientNameOb = '';
+        }
       }
     );
   }

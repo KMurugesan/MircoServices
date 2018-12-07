@@ -21,7 +21,6 @@ export class AppComponent {
   clientDetail: ClientDetails;
   clientName: string;
   status: 'P';
-  action: string;
 
   constructor(private dataService: DataService) {
     this.clientDetail = new ClientDetails();
@@ -33,7 +32,7 @@ export class AppComponent {
     this.creatingClientDetails = false;
     this.clientDetailsAvailable = true;
     this.showErrorMessage = false;
-    this.action = 'C';
+    this.clientDetail.action = 'C';
   }
 
   getClientDetails() {

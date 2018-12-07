@@ -40,6 +40,7 @@ export class ProductDetailsComponent implements OnInit {
     this.buildFormControlsInd();
     this.buildProductFormControls();
     this.loadProductDetails();
+    // this.getProductDetails(1, 'Thunder');
     console.log(this.product);
   }
 
@@ -100,7 +101,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   loadProductDetails() {
-    this.productType.setValue(this.product.productType);
+    // this.productType.setValue(this.product.productName);
     this.transportType.setValue(this.product.transportType);
     this.bandwidthType.setValue(this.product.bandwidthType);
     this.routerType.setValue(this.product.routerType);
