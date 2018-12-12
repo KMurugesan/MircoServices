@@ -20,16 +20,19 @@ export class DataService {
   }
 
   getClientDetails(clientName): Observable<ClientDetails> {
-    const _headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*'
-    });
-
-    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/findByCompany/' + clientName, { headers: _headers })
+    const options = this.options();
+    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/findByCompany/' + clientName, options)
       .map(res => res.ClientDetails);
   }
 
   getProductDetails(productId: number, productName: string): Observable<ProductDetails> {
-    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/product')
+    // let body = new HttpParams().set(productId, productName)
+    const options = this.options();
+    // options:{
+    //   observe: productId;
+    //   observe: productName;
+    // }
+    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/product' + productId + productName, options)
       .map(res => res.ProductDetails);
   }
 

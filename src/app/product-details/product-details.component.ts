@@ -2,6 +2,7 @@ import { DataService } from './../_services/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductDetails } from './../model/ProductDetails';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-product-details',
@@ -23,6 +24,8 @@ export class ProductDetailsComponent implements OnInit {
   shippingPrice: FormControl;
   total: FormControl;
   discount: FormControl;
+
+  productNameOb: string;
 
   productTypes = [{ productName: 'Vodafone', productType: 'Thunder' },
   { productName: 'Airtel', productType: 'Storm' },
@@ -117,6 +120,12 @@ export class ProductDetailsComponent implements OnInit {
     this.dataService.persistProductDetails(this.product).subscribe(
       product => {
         console.log(product);
+        if (product.productName !== undefined) {
+          this.productNameOb = product.productName;
+          $('#success').modal({ show: true });
+        } else {
+          this.productNameOb = '';
+        }
       }
     );
   }

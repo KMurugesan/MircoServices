@@ -36,7 +36,7 @@ export class AppComponent {
   }
 
   getClientDetails() {
-    this.clientDetailsAvailable = true;
+    // this.clientDetailsAvailable = true;
     console.log(this.clientName);
     this.dataService.getClientDetails(this.clientName).subscribe(res => {
       if (res !== undefined) {
