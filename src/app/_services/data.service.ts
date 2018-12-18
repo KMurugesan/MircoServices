@@ -25,14 +25,14 @@ export class DataService {
       .map(res => res.ClientDetails);
   }
 
-  getProductDetails(productId: number, productName: string): Observable<ProductDetails> {
+  getProductDetails( productName: string): Observable<ProductDetails> {
     // let body = new HttpParams().set(productId, productName)
     const options = this.options();
     // options:{
     //   observe: productId;
     //   observe: productName;
     // }
-    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/product' + productId + productName, options)
+    return this.httpClient.get<any>('http://india-saviya.perficient.com:8082/client/product' + productName, options)
       .map(res => res.ProductDetails);
   }
 

@@ -92,7 +92,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails(productId: number, productName: string) {
-    this.dataService.getProductDetails(productId, productName).subscribe(res => {
+    this.dataService.getProductDetails(productName).subscribe(res => {
       if (res !== undefined) {
         this.product = res;
         console.log(this.product);
