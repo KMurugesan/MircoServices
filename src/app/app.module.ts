@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { TelecomservicesComponent } from './src/telecomservices/telecomservices.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ReviewComponent } from './review/review.component';
@@ -14,7 +13,6 @@ import { ReviewComponent } from './review/review.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TelecomservicesComponent,
     ClientDetailsComponent,
     ProductDetailsComponent,
     ReviewComponent
