@@ -1,6 +1,6 @@
 export class Price {
   basePrice: number;
-  shippingPrice: number;
+  shippingCharge: number;
   discount: number;
   total: number;
 }

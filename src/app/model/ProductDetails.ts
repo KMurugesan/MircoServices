@@ -1,12 +1,12 @@
 import { Price } from './Price';
 export class ProductDetails {
   productId: number;
-  productName: string;
+  name: any;
   productType: any;
-  transportType: String;
-  bandwidthType: String;
-  businessExtensionType: String;
-  routerType: String;
+  transport: String;
+  bandwidth: String;
+  buildingExtn: String;
+  router: String;
   price: Price;
   constructor() {
     this.price = new Price();

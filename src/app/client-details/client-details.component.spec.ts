@@ -11,9 +11,9 @@ describe('ClientDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientDetailsComponent ]
+      declarations: [ClientDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,7 +22,14 @@ describe('ClientDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('All the Client Details should be entered', async(() => {
+    component.clientForm.controls['clientName'].setValue('Perficient');
+    component.clientForm.controls['companyName'].setValue('Perficient');
+    // component.clientForm.controls['email'].setValue('Perficient');
+    // component.clientForm.controls['extension'].setValue('Perficient');
+    component.clientForm.controls['addressLine1'].setValue('Perficient');
+    component.clientForm.controls['addressLine2'].setValue('Perficient');
+    component.clientForm.controls['city'].setValue('Perficient');
+    expect(component.clientForm.valid).toBeTruthy();
+  }));
 });

@@ -1,190 +1,189 @@
 <div class="container-fluid">
   <ngForm>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Product</label>
-          </div>
-          <div class="col-md-6">
-            <select (change)="onProductChange($event)" name="setProductType" class="dropdown">
-              <option [ngValue]="product" *ngFor="let product of product.productType">{{product.productType}}</option>
-            </select>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Product</label>
+            </div>
+            <div class="col-md-6">
+              <select (change)="onProductChange($event)" name="setProductType" class="dropdown">
+                <option [ngValue]="productName" *ngFor="let product of product.productType">{{product.productType}}</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Transport</label>
+            </div>
+            <div class="col-md-6">
+              <input formControlName="transportType" required class="input-length" placeholder="Transport Type" />
+              <div class="alert  alert-danger" *ngIf="productForm.get('transportType').hasError('required') && productForm.get('transportType').touched">
+                Client Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Bandwidth</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Bandwidth" formControlName="bandwidthType" required class="input-length" />
+              <div class="alert  alert-danger" *ngIf="productForm.get('bandwidthType').hasError('required') && productForm.get('bandwidthType').touched">
+                Client Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Building Extension</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Building Extension" formControlName="businessExtensionType" required class="input-length" />
+              <div class="alert  alert-danger" *ngIf="productForm.get('businessExtensionType').hasError('required') && productForm.get('businessExtensionType').touched">
+                Client Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Router</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Router" formControlName="routerType" required class="input-length" />
+              <div class="alert  alert-danger" *ngIf="productForm.get('routerType').hasError('required') && productForm.get('routerType').touched">
+                Client Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Base Charges</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Base Charges" formControlName="basePrice" required class="input-length" />
+              <div class="alert  alert-danger" *ngIf="productForm.get('basePrice').hasError('required') && productForm.get('basePrice').touched">
+                Client Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Shipping Charges</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Shipping Charges" formControlName="shippingPrice" required class="input-length" />
+            </div>
+            <div class="alert  alert-danger" *ngIf="productForm.get('shippingPrice').hasError('required') && productForm.get('shippingPrice').touched">
+              Client Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Total Charges</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Total Charges" formControlName="total" required class="input-length" />
+            </div>
+            <div class="alert  alert-danger" *ngIf="productForm.get('total').hasError('required') && productForm.get('total').touched">
+              Client Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+              <label>Discount Charges</label>
+            </div>
+            <div class="col-md-6">
+              <input placeholder="Discount Charges" formControlName="discount" required class="input-length" />
+            </div>
+            <div class="alert  alert-danger" *ngIf="productForm.get('discount').hasError('required') && productForm.get('discount').touched">
+              Client Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding-top">
+        <div class="col-md-12">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+              <div class="dropdown">
+                <button type="submit" style=" color: crimson;" class="btn input-length" (click)="persistProductDetails()"
+                  [disabled]="productForm.invalid">
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </ngForm>
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Transport</label>
-          </div>
-          <div class="col-md-6">
-            <input formControlName="transportType" required class="input-length" placeholder="Transport Type" />
-            <div class="alert  alert-danger" *ngIf="productForm.get('transportType').hasError('required') && productForm.get('transportType').touched">
-              Client Name is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Bandwidth</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Bandwidth" formControlName="bandwidthType" required class="input-length" />
-            <div class="alert  alert-danger" *ngIf="productForm.get('bandwidthType').hasError('required') && productForm.get('bandwidthType').touched">
-              Client Name is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Building Extension</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Building Extension" formControlName="businessExtensionType" required class="input-length" />
-            <div class="alert  alert-danger" *ngIf="productForm.get('businessExtensionType').hasError('required') && productForm.get('businessExtensionType').touched">
-              Client Name is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Router</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Router" formControlName="routerType" required class="input-length" />
-            <div class="alert  alert-danger" *ngIf="productForm.get('routerType').hasError('required') && productForm.get('routerType').touched">
-              Client Name is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Base Charges</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Base Charges" formControlName="basePrice" required class="input-length" />
-            <div class="alert  alert-danger" *ngIf="productForm.get('basePrice').hasError('required') && productForm.get('basePrice').touched">
-              Client Name is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Shipping Charges</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Shipping Charges" formControlName="shippingPrice" required class="input-length" />
-          </div>
-          <div class="alert  alert-danger" *ngIf="productForm.get('shippingPrice').hasError('required') && productForm.get('shippingPrice').touched">
-            Client Name is required
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Total Charges</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Total Charges" formControlName="total" required class="input-length" />
-          </div>
-          <div class="alert  alert-danger" *ngIf="productForm.get('total').hasError('required') && productForm.get('total').touched">
-            Client Name is required
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-            <label>Discount Charges</label>
-          </div>
-          <div class="col-md-6">
-            <input placeholder="Discount Charges" formControlName="discount" required class="input-length" />
-          </div>
-          <div class="alert  alert-danger" *ngIf="productForm.get('discount').hasError('required') && productForm.get('discount').touched">
-            Client Name is required
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row padding-top">
-      <div class="col-md-12">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-6">
-            <div class="dropdown">
-              <button type="submit" style=" color: crimson;" class="btn input-length" (click)="persistProductDetails()"
-                [disabled]="productForm.invalid">
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
 </div>
 <div class="modal" id="success">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Success</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          Product {{productNameOb}} was created successfully.
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Success</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Product {{productNameOb}} was created successfully.
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
     </div>
   </div>
+</div>

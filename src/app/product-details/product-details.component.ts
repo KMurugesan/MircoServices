@@ -27,10 +27,10 @@ export class ProductDetailsComponent implements OnInit {
 
   productNameOb: string;
 
-  productTypes = [{ productName: 'Vodafone', productType: 'Thunder' },
-  { productName: 'Airtel', productType: 'Storm' },
-  { productName: 'Aircel', productType: 'Fast' },
-  { productName: 'BSNL', productType: 'SFast' }];
+  productTypes = [{ productName: 'Vodafone', productType: 'THUNDER' },
+  { productName: 'Airtel', productType: 'STORM' },
+  { productName: 'Aircel', productType: 'FAST' },
+  { productName: 'BSNL', productType: 'SFAST' }];
   selectedProductType = this.productTypes[1];
 
   constructor(private dataService: DataService) {
@@ -39,28 +39,29 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.product.productType = this.productTypes;
-    console.log(this.product.productType);
     this.buildFormControlsInd();
     this.buildProductFormControls();
     this.loadProductDetails();
-    // this.getProductDetails(1, 'Thunder');
     console.log(this.product);
   }
 
-  onProductChange($event) {
-    console.log($event);
-    this.selectedProductType = $event;
-    this.getProductDetails(this.product.productId, this.product.productName);
+  onProductChange(event) {
+    console.log(event);
+    this.selectedProductType = event.target.value;
+    console.log(this.selectedProductType);
+    this.product.name = this.selectedProductType;
+    console.log(this.product.name);
+    this.getProductDetails(this.product.name);
   }
 
   onSubmit() {
-    this.product.productType = this.selectedProductType.productType;
-    this.product.transportType = this.productForm.get('transportType').value;
-    this.product.bandwidthType = this.productForm.get('bandwidthType').value;
-    this.product.businessExtensionType = this.productForm.get('businessExtensionType').value;
-    this.product.routerType = this.productForm.get('routerType').value;
+    // this.product.productType = this.selectedProductType.productType;
+    this.product.transport = this.productForm.get('transportType').value;
+    this.product.bandwidth = this.productForm.get('bandwidthType').value;
+    this.product.buildingExtn = this.productForm.get('businessExtensionType').value;
+    this.product.router = this.productForm.get('routerType').value;
     this.product.price.basePrice = this.productForm.get('basePrice').value;
-    this.product.price.shippingPrice = this.productForm.get('shippingPrice').value;
+    this.product.price.shippingCharge = this.productForm.get('shippingPrice').value;
     this.product.price.total = this.productForm.get('total').value;
     this.product.price.discount = this.productForm.get('discount').value;
   }
@@ -91,11 +92,12 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  getProductDetails(productId: number, productName: string) {
+  getProductDetails(productName: string) {
+    console.log(productName);
     this.dataService.getProductDetails(productName).subscribe(res => {
       if (res !== undefined) {
         this.product = res;
-        console.log(this.product);
+        console.log(res);
         this.loadProductDetails();
       } else {
         // this.showErrorMessage = true;
@@ -104,13 +106,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   loadProductDetails() {
-    // this.productType.setValue(this.product.productName);
-    this.transportType.setValue(this.product.transportType);
-    this.bandwidthType.setValue(this.product.bandwidthType);
-    this.routerType.setValue(this.product.routerType);
-    this.businessExtensionType.setValue(this.product.businessExtensionType);
+    this.productType.setValue(this.product.name);
+    this.transportType.setValue(this.product.transport);
+    this.bandwidthType.setValue(this.product.bandwidth);
+    this.routerType.setValue(this.product.router);
+    this.businessExtensionType.setValue(this.product.buildingExtn);
     this.basePrice.setValue(this.product.price.basePrice);
-    this.shippingPrice.setValue(this.product.price.shippingPrice);
+    this.shippingPrice.setValue(this.product.price.shippingCharge);
     this.total.setValue(this.product.price.total);
     this.discount.setValue(this.product.price.discount);
   }
@@ -120,8 +122,8 @@ export class ProductDetailsComponent implements OnInit {
     this.dataService.persistProductDetails(this.product).subscribe(
       product => {
         console.log(product);
-        if (product.productName !== undefined) {
-          this.productNameOb = product.productName;
+        if (product.name !== undefined) {
+          this.productNameOb = product.name;
           $('#success').modal({ show: true });
         } else {
           this.productNameOb = '';

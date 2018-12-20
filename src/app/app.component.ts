@@ -47,7 +47,7 @@ export class AppComponent {
         this.clientDetail.action = 'U';
         this.clientDetail.status = this.status;
         this.productDetail.productId = this.clientDetail.product.productId;
-        this.productDetail.productName = this.clientDetail.product.productName;
+        this.productDetail.name = this.clientDetail.product.name;
       } else {
         this.showErrorMessage = true;
       }
