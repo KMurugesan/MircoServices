@@ -10,7 +10,6 @@ declare var $: any;
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-
   productForm: FormGroup;
 
   @Input() product: ProductDetails;
@@ -25,12 +24,15 @@ export class ProductDetailsComponent implements OnInit {
   total: FormControl;
   discount: FormControl;
 
+  productTypeSelected = true;
   productNameOb: string;
 
-  productTypes = [{ productName: 'Vodafone', productType: 'THUNDER' },
-  { productName: 'Airtel', productType: 'STORM' },
-  { productName: 'Aircel', productType: 'FAST' },
-  { productName: 'BSNL', productType: 'SFAST' }];
+  productTypes = [
+    { productType: 'THUNDER' },
+    { productType: 'STORM' },
+    { productType: 'FAST' },
+    { productType: 'SFAST' }
+  ];
   selectedProductType = this.productTypes[1];
 
   constructor(private dataService: DataService) {
@@ -38,10 +40,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.productTypeSelected = true;
     this.product.productType = this.productTypes;
     this.buildFormControlsInd();
     this.buildProductFormControls();
-    this.loadProductDetails();
     console.log(this.product);
   }
 
@@ -55,7 +57,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.product.productType = this.selectedProductType.productType;
+    this.product.productType = this.selectedProductType.productType;
     this.product.transport = this.productForm.get('transportType').value;
     this.product.bandwidth = this.productForm.get('bandwidthType').value;
     this.product.buildingExtn = this.productForm.get('businessExtensionType').value;
@@ -94,7 +96,7 @@ export class ProductDetailsComponent implements OnInit {
 
   getProductDetails(productName: string) {
     console.log(productName);
-    this.dataService.getProductDetails(productName).subscribe(res => {
+    this.dataService.getProductDetails(productName).subscribe((res) => {
       if (res !== undefined) {
         this.product = res;
         console.log(res);
@@ -107,6 +109,9 @@ export class ProductDetailsComponent implements OnInit {
 
   loadProductDetails() {
     this.productType.setValue(this.product.name);
+    console.log(this.productType);
+    this.productTypes.values = this.productType.value;
+    this.productTypeSelected = false;
     this.transportType.setValue(this.product.transport);
     this.bandwidthType.setValue(this.product.bandwidth);
     this.routerType.setValue(this.product.router);
@@ -119,16 +124,15 @@ export class ProductDetailsComponent implements OnInit {
 
   persistProductDetails() {
     this.onSubmit();
-    this.dataService.persistProductDetails(this.product).subscribe(
-      product => {
-        console.log(product);
-        if (product.name !== undefined) {
-          this.productNameOb = product.name;
-          $('#success').modal({ show: true });
-        } else {
-          this.productNameOb = '';
-        }
+    console.log(this.product);
+    this.dataService.persistProductDetails(this.product).subscribe((product) => {
+      console.log(product);
+      if (product.name !== undefined) {
+        this.productNameOb = product.name;
+        $('#success').modal({ show: true });
+      } else {
+        this.productNameOb = '';
       }
-    );
+    });
   }
 }
